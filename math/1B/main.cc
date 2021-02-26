@@ -1,52 +1,34 @@
 // https://codeforces.com/problemset/problem/1/B
 // TODO
-#include <iostream>
-#include <algorithm>
-#include <vector>
-#include <string>
-using namespace std;
-
-string getAnswer(string input)
+#include <cstdio>
+void g(int t)
 {
-    string ans;
-
-    if (input[0] == 'R')
+    if (t)
     {
-        string row = NULL, col = NULL;
-        int row_iter = 0;
-        int string_len = input.length();
-        while (input[row_iter++] != 'C')
-            ;
-        row = input.substr(1, row_iter);
-        col = input.substr(row_iter + 1, string_len - row_iter - 1);
-    }
-    else
-    {
+        g((t - 1) / 26);
+        putchar(65 + (t - 1) % 26);
     }
 }
-int main(void)
+int main()
 {
-    long long int n;
-    cin >> n;
-    long long int x = n;
-    vector<string> input;
-    vector<string> answer;
-    string temp;
-    while (x--)
+    int n, x, y;
+    char s[64], *p;
+    for (scanf("%d ", &n); n--;)
     {
-        cin >> temp;
-        input.push_back(temp);
+        gets(s);
+        if (sscanf(s, "%*c%d%*c%d", &x, &y) == 2)
+        {
+            g(y);
+            printf("%d\n", x);
+        }
+        else
+        {
+            for (x = 0, p = s; *p > 64; ++p)
+            {
+                x = x * 26 + *p - 64;
+            }
+            printf("R%sC%d\n", p, x);
+        }
     }
-    x = 0;
-    while (x < n)
-    {
-        answer.push_back(getAnswer(input.at(x)));
-        x += 1;
-    }
-    x = 0;
-    while (x < n - 1)
-    {
-        cout << answer.at(x) << endl;
-    }
-    cout << answer.at(n - 1);
+    return 0;
 }
