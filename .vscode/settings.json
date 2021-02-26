@@ -1,6 +1,7 @@
 {
     "files.associations": {
         "*.js": "javascriptreact",
-        "algorithm": "cpp"
+        "algorithm": "cpp",
+        "xstring": "cpp"
     }
 }
