@@ -1,2 +1,2 @@
 # competitive
- my approach and solutions to selected competitive problems
+my approach and solutions to selectivecompetitive problems
